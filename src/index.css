@@ -1,0 +1,383 @@
+@import "tailwindcss";
+
+@theme {
+  --color-ink: #14120F;
+  --color-ink-soft: #221F1B;
+  --color-stone: #7A7268;
+  --color-line: #E8E3DA;
+  --color-cream: #FAF8F5;
+  --color-ivory: #FFFFFF;
+  --color-gold: #B38E46;
+  --color-gold-soft: #CCA96B;
+
+  --font-display: "Cormorant Garamond", Georgia, serif;
+  --font-body: "Inter", system-ui, -apple-system, sans-serif;
+
+  --shadow-soft: 0 1px 12px rgba(20, 18, 15, 0.04);
+  --shadow-lift: 0 8px 30px rgba(20, 18, 15, 0.06);
+
+  --radius-none: 0px;
+  --radius-sm: 0px;
+  --radius-md: 2px;
+  --radius-lg: 2px;
+
+  --ease-luxury: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+
+  body {
+    background-color: var(--color-cream);
+    color: var(--color-ink);
+    font-family: var(--font-body);
+    line-height: 1.75;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+
+  h1 {
+    font-family: var(--font-display);
+    font-size: 40px;
+    font-weight: 300;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+  }
+  @media (min-width: 640px) {
+    h1 {
+      font-size: clamp(48px, 5.5vw, 80px);
+    }
+  }
+
+  h2 {
+    font-family: var(--font-display);
+    font-size: 32px;
+    font-weight: 300;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+  }
+  @media (min-width: 640px) {
+    h2 {
+      font-size: clamp(36px, 4vw, 56px);
+    }
+  }
+
+  h1, h2, h3, h4, .font-serif {
+    font-family: var(--font-display);
+    font-weight: 300;
+    letter-spacing: -0.02em;
+  }
+
+  /* Custom focus style */
+  :focus-visible {
+    outline: 1px solid var(--color-gold);
+    outline-offset: 3px;
+  }
+}
+
+/* Minimum tap target rule for interactive elements */
+button, 
+input, 
+select, 
+textarea, 
+.tap-target {
+  min-height: 44px;
+}
+
+/* Luxury Typography Utilities */
+.eyebrow-luxury {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--color-gold);
+  font-weight: 400;
+}
+
+.type-h1 {
+  font-family: var(--font-display);
+  font-size: 80px;
+  font-weight: 300;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+}
+
+.type-h2 {
+  font-family: var(--font-display);
+  font-size: 56px;
+  font-weight: 300;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.body-constrained {
+  max-width: 62ch;
+  line-height: 1.75;
+}
+
+/* Luxury button fill effect */
+.btn-luxury-primary {
+  position: relative;
+  background-color: var(--color-ink);
+  color: var(--color-cream);
+  overflow: hidden;
+  z-index: 1;
+  transition: color 400ms var(--ease-luxury);
+}
+
+.btn-luxury-primary::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--color-gold);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 400ms var(--ease-luxury);
+  z-index: -1;
+}
+
+.btn-luxury-primary:hover::before {
+  transform: scaleX(1);
+}
+
+.btn-luxury-primary:hover {
+  color: #FFFFFF;
+}
+
+/* Secondary button */
+.btn-luxury-secondary {
+  position: relative;
+  border: 1px solid var(--color-ink);
+  background-color: transparent;
+  color: var(--color-ink);
+  overflow: hidden;
+  z-index: 1;
+  transition: color 400ms var(--ease-luxury), border-color 400ms var(--ease-luxury);
+}
+
+.btn-luxury-secondary::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--color-ink);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 400ms var(--ease-luxury);
+  z-index: -1;
+}
+
+.btn-luxury-secondary:hover::before {
+  transform: scaleX(1);
+}
+
+.btn-luxury-secondary:hover {
+  color: var(--color-cream);
+}
+
+/* Gold bordered button (Header enquire) */
+.btn-luxury-gold {
+  position: relative;
+  border: 1px solid var(--color-gold);
+  background-color: transparent;
+  color: inherit;
+  overflow: hidden;
+  z-index: 1;
+  transition: color 400ms var(--ease-luxury), border-color 400ms var(--ease-luxury);
+}
+
+.btn-luxury-gold::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--color-gold);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 400ms var(--ease-luxury);
+  z-index: -1;
+}
+
+.btn-luxury-gold:hover::before {
+  transform: scaleX(1);
+}
+
+.btn-luxury-gold:hover {
+  color: #FFFFFF;
+  border-color: var(--color-gold);
+}
+
+/* Animated tertiary link underline */
+.link-tertiary {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-weight: 500;
+  color: var(--color-ink);
+  padding-bottom: 3px;
+  cursor: pointer;
+}
+
+.link-tertiary::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 1px;
+  background-color: var(--color-gold);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 400ms var(--ease-luxury);
+}
+
+.link-tertiary:hover::after {
+  transform: scaleX(1);
+}
+
+.dark .link-tertiary {
+  color: var(--color-cream);
+}
+
+/* Ken Burns slow zoom */
+@keyframes kenburns {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.08);
+  }
+}
+
+.animate-ken-burns {
+  animation: kenburns 12s ease-out forwards;
+}
+
+/* Marquee strip */
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 40s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee,
+  .animate-ken-burns {
+    animation: none !important;
+  }
+  * {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}
+
+/* Custom thin scrollbar */
+.luxury-scrollbar::-webkit-scrollbar {
+  height: 2px;
+  width: 2px;
+}
+
+.luxury-scrollbar::-webkit-scrollbar-track {
+  background: var(--color-line);
+}
+
+.luxury-scrollbar::-webkit-scrollbar-thumb {
+  background: var(--color-gold);
+}
+
+/* ==========================================================================
+   Global Dropdown, Select & Option Visibility (All Sides / Light & Dark Modes)
+   ========================================================================== */
+select {
+  color-scheme: light dark;
+  background-color: #ffffff;
+  color: #111827;
+  border-color: #d1d5db;
+}
+
+.dark select,
+[data-theme="dark"] select {
+  color-scheme: dark;
+  background-color: #18181b;
+  color: #f4f4f5;
+  border-color: #3f3f46;
+}
+
+/* Guarantee crisp opaque options across all operating systems & browser engines */
+select option,
+select optgroup {
+  background-color: #ffffff !important;
+  color: #111827 !important;
+  padding: 8px 12px;
+  font-size: 13px;
+}
+
+.dark select option,
+.dark select optgroup,
+[data-theme="dark"] select option,
+[data-theme="dark"] select optgroup {
+  background-color: #18181b !important;
+  color: #f4f4f5 !important;
+}
+
+select option:checked {
+  background-color: #A8823C !important;
+  color: #ffffff !important;
+}
+
+.dark select option:checked,
+[data-theme="dark"] select option:checked {
+  background-color: #A8823C !important;
+  color: #ffffff !important;
+}
+
+/* Ensure focus states on selects are clearly framed on all 4 sides */
+select:focus {
+  outline: none;
+  border-color: #A8823C !important;
+  box-shadow: 0 0 0 2px rgba(168, 130, 60, 0.25) !important;
+}
+
+/* Dropdown popover containers: clear border, high z-index, and elevated shadow */
+[role="menu"],
+.dropdown-menu,
+.dropdown-popover {
+  border-width: 1px;
+  border-style: solid;
+  border-color: rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.15), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+}
+
+.dark [role="menu"],
+.dark .dropdown-menu,
+.dark .dropdown-popover {
+  border-color: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 8px 10px -6px rgba(0, 0, 0, 0.4);
+}

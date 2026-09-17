@@ -1,0 +1,6 @@
+{
+  "name": "Omaxe Limited",
+  "description": "Luxury residential townships, commercial landmarks, and integrated destinations across India.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
